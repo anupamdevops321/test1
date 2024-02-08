@@ -1,0 +1,21 @@
+name: Trigger Workflow in Second Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Message
+        run: echo "This is the first repository"
+
+      - name: Trigger Workflow in Second Repository
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_FOR_TRIGGER }}
+          repository: owner/second-repo
+          event-type: trigger-event
+          client-payload: '{"message": "Workflow triggered by first repository"}'
