@@ -16,6 +16,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.PAT_FOR_TRIGGER }}
-          repository: owner/second-repo
+          repository: anupamdevops321/test2
           event-type: trigger-event
           client-payload: '{"message": "Workflow triggered by first repository"}'
